@@ -11,6 +11,7 @@ namespace ADO.NET_Movie_Assignment
             bool isRunning = true;
             while (isRunning)
             {
+                Console.Clear();
                 var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("[orange1]---[/] Filmregister [orange1]---[/]:")
@@ -21,13 +22,16 @@ namespace ADO.NET_Movie_Assignment
                 switch (choice)
                 {
                     case "Visa alla filmer":
-                        MovieController.GetAndShowAllMovies();
+                        InputController.GetAndShowAllMovies();
                         break;
                     case "Sök filmer efter genre":
+                        InputController.GetMoviesByGenre();
                         break;
                     case "Lägg till film":
+                        InputController.CreateNewMovie();
                         break;
                     case "Ta bort film":
+                        InputController.DeleteMovie();
                         break;
 
 
@@ -38,10 +42,9 @@ namespace ADO.NET_Movie_Assignment
                     default:
                         break;
                 }
-
-
             }
 
+            AnsiConsole.MarkupLine("[orange1]Tack för att du använt vårt filmregister[/]");
         }
     }
 }
